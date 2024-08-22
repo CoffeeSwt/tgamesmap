@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { BasicEngine } from '@scripts/index';
 import { onMounted, ref } from 'vue';
-const engine = new BasicEngine()
+let engine
 const renderTarget = ref(null)
 onMounted(() => {
-    engine.mountDom(renderTarget.value!)
-    engine.render()
+    engine = new BasicEngine(renderTarget.value!).render()
+
 })
 </script>
 
