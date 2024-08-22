@@ -12,6 +12,7 @@ export default defineConfig({
       "@": resolve(__dirname, "src"),
       // @component 替代为 src/component
       "@components": resolve(__dirname, "src/components"),
+      "@scripts": resolve(__dirname, "src/assets/scripts"),
     },
   },
 });
