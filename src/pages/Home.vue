@@ -1,10 +1,25 @@
 <script setup lang="ts">
 import { BasicEngine } from '@scripts/index';
+import { Pane } from 'tweakpane';
 import { onMounted, ref } from 'vue';
-let engine
+const engine = new BasicEngine()
 const renderTarget = ref(null)
+
+const PARAMS = {
+    factor: 123,
+    title: 'hello',
+    color: '#ff0055',
+};
+
+const pane = new Pane();
+
+pane.addBinding(PARAMS, 'factor');
+pane.addBinding(PARAMS, 'title');
+pane.addBinding(PARAMS, 'color');
+
 onMounted(() => {
-    engine = new BasicEngine(renderTarget.value!).render()
+    const res = engine.mountDom(renderTarget.value!).addTestBox().render()
+    console.log(res)
 
 })
 </script>
