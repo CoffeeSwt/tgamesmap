@@ -20,7 +20,6 @@ pane.addBinding(PARAMS, 'color');
 onMounted(() => {
     const res = engine.mountDom(renderTarget.value!).addTestBox().render()
     console.log(res)
-
 })
 </script>
 

@@ -20,16 +20,29 @@ export class BasicEngine {
     if (dom) this.mountDom(dom);
     return this;
   }
+
   mountDom(dom: HTMLElement) {
-    this.renderer.setSize(dom.offsetWidth, dom.offsetHeight);
-    dom.appendChild(this.renderer.domElement);
-    this.camera.aspect = dom.offsetWidth / dom.offsetHeight;
-    this.camera.fov = 50;
-    this.camera.near = 0.1;
-    this.camera.far = 1000;
-    this.camera.position.set(20, 20, 20);
-    this.camera.lookAt(0, 0, 0);
-    this.camera.updateProjectionMatrix();
+    const updateRenderParms = () => {
+      this.camera.aspect = dom.offsetWidth / dom.offsetHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(dom.offsetWidth, dom.offsetHeight);
+    };
+    const domResizeObserver = new ResizeObserver(() => {
+      // console.log("size changed");
+      updateRenderParms()
+      this.render();
+    });
+    const setDefalutConfigViaDom = (dom: HTMLElement) => {
+      this.camera.fov = 50;
+      this.camera.near = 0.1;
+      this.camera.far = 1000;
+      this.camera.position.set(20, 20, 20);
+      this.camera.lookAt(0, 0, 0);
+      dom.appendChild(this.renderer.domElement);
+      updateRenderParms()
+      domResizeObserver.observe(dom);
+    };
+    setDefalutConfigViaDom(dom);
     return this;
   }
   render() {
