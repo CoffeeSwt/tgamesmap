@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@scripts/*": ["src/assets/scripts/*"]
+      "@tgamesmap/*": ["tgamesmap/src/*"]
     }
   },
   "include": ["vite.config.ts"]

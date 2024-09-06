@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BasicEngine } from '@scripts/index';
+import { BasicEngine } from '@tgamesmap/index'
 import { Pane } from 'tweakpane';
 import { onMounted, ref } from 'vue';
 const engine = new BasicEngine()
