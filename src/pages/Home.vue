@@ -18,8 +18,7 @@ pane.addBinding(PARAMS, 'title');
 pane.addBinding(PARAMS, 'color');
 
 onMounted(() => {
-    const res = engine.mountDom(renderTarget.value!).addTestBox().render()
-    console.log(res)
+    engine.mountDom(renderTarget.value!).addTestBox().render()
 })
 </script>
 
